@@ -49,7 +49,7 @@ const AddNewInterview = () => {
       .insert(MockInterview)
       .values({
         mockId: uuidv4(),
-        jsonMockResponse: jsonResponse,
+        jsonMockResponse: MockJsonResponse,
         jobPosition: jobPosition,
         jobDescription: jobDescription,
         jobExperience: yearsExperience,
