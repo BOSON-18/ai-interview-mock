@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { eq } from "drizzle-orm";
 import React, { useEffect, useState } from "react";
 import { db } from "utils/db";
@@ -6,6 +6,7 @@ import { MockInterview } from "utils/schema";
 import Webcam from "react-webcam";
 import { Lightbulb, WebcamIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Interview = ({ params }) => {
   const [interviewData, setInterviewData] = useState();
@@ -32,9 +33,14 @@ const Interview = ({ params }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
           {webCamEnabled ? (
-          <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center">
               <Webcam
-                style={{ height: 300, width: '100%',margin:'7px 0',padding:'20px' }}
+                style={{
+                  height: 300,
+                  width: "100%",
+                  margin: "7px 0",
+                  padding: "20px",
+                }}
                 // className="h-72 w-full my-7 bg-slate-200 p-5"
                 onUserMedia={() => setWebCamEnabled(true)}
                 onUserMediaError={() => setWebCamEnabled(false)}
@@ -80,15 +86,19 @@ const Interview = ({ params }) => {
               Enable Video Cam and Microphone to Start your AI Generated Mock
               Interview.
               <br />
-              <strong className="text-red-600">Note:</strong> I don't have enough storage in my database so the
-              video will not be recorded but still you can disable it anytime if
-              you don't want to see you face (without filter :)
+              <strong className="text-red-600">Note:</strong> I don't have
+              enough storage in my database so the video will not be recorded
+              but still you can disable it anytime if you don't want to see you
+              face (without filter :)
             </h2>
           </div>
         </div>
 
         <div className="flex justify-center items-center">
-          <Button>Start Interview</Button>
+          <Link href={"/dashboard/interview/" + params.interviewid + "/start"}>
+            {" "}
+            <Button>Start Interview</Button>
+          </Link>
         </div>
       </div>
     </div>
