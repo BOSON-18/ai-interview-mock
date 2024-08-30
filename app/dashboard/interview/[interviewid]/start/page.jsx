@@ -1,13 +1,13 @@
  "use client"
 
-import { eq } from 'drizzle-orm';
-import React, { useEffect, useState } from 'react'
-import { db } from 'utils/db';
-import { MockInterview } from 'utils/schema';
-import QuestionsSection from './_components/QuestionsSection'
-import RecordAnswer from './_components/RecordAnswer'
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { eq } from "drizzle-orm";
+import React, { useEffect, useState } from "react"
+import { db } from "utils/db";
+import { MockInterview } from "utils/schema";
+import QuestionsSection from "./_components/QuestionsSection"
+import RecordAnswer from "./_components/RecordAnswer"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const StartInterview = ({params}) => {
 
@@ -36,7 +36,7 @@ const StartInterview = ({params}) => {
 
   return (
     <div>
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
         {/* Questions */}
 
@@ -51,7 +51,7 @@ const StartInterview = ({params}) => {
     </div>
 
     <div>
-      <Link href={'/dashboard/interview/'+interviewData?.mockId+'/feedback'}>
+      <Link href={"/dashboard/interview/"+interviewData?.mockId+"/feedback"}>
       <Button>End Interview</Button>
       </Link>
     </div>

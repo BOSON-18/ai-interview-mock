@@ -63,7 +63,7 @@ const AddNewInterview = () => {
 
       if(response){
         setOpenDialog(false);
-        router.push('/dashboard/interview/'+response[0]?.mockId)
+        router.push("/dashboard/interview/"+response[0]?.mockId)
       }
     }else{
       console.log("error")

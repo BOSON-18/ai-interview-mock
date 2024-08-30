@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   // const router=useRouter();
-  // router.push('/dashboard')
+  // router.push("/dashboard")
   return (
     <section className="bg-white">
     <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -77,7 +77,7 @@ export default function Home() {
             </p>
           </div>
   <div>
-    <Link href={'/dashboard'} ><div className="p-5 border rounded-lg shadow-sm ">Sign In/Sign Up <strong>{"->"}</strong> </div></Link>
+    <Link href={"/dashboard"} ><div className="p-5 border rounded-lg shadow-sm ">Sign In/Sign Up <strong>{"->"}</strong> </div></Link>
   </div>
         </div>
       </main>

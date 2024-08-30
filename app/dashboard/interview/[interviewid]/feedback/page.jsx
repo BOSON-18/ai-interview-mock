@@ -58,15 +58,15 @@ const Feedback = ({ params }) => {
                 {" "}
                 <div className="border  border-red-200 p-4  rounded-lg  text-red-500" ><strong>  <h2>RATING:{item.rating}</h2>{" "}</strong></div>
                 <div className="bg-red-200 border p-4 my-2 rounded-lg">  <strong>User Answer:</strong><h4>{item.userAns}</h4>{" "}</div>
-                <div className="bg-blue-200 border p-4 my-2 rounded-lg"> <strong>AI Generated Answer:</strong> <h4>{item.correctAns.replace(/\*\*/g, '')}</h4>{" "}</div>
-                <div className="bg-blue-200 border p-4 my-2 rounded-lg"> <strong>AI Feedbcak:</strong> <h4>{item.feedback.replace(/\*\*/g, '')}</h4>{" "}</div>
+                <div className="bg-blue-200 border p-4 my-2 rounded-lg"> <strong>AI Generated Answer:</strong> <h4>{item.correctAns.replace(/\*\*/g, "")}</h4>{" "}</div>
+                <div className="bg-blue-200 border p-4 my-2 rounded-lg"> <strong>AI Feedbcak:</strong> <h4>{item.feedback.replace(/\*\*/g, "")}</h4>{" "}</div>
               
               </div>
             </CollapsibleContent>
           </Collapsible>
         ))}
 <div  className="flex justify-center mt-5">
-        <Button onClick={()=>router.replace('/dashboard')} >Go Home</Button>
+        <Button onClick={()=>router.replace("/dashboard")} >Go Home</Button>
         </div>
         </div>
 }

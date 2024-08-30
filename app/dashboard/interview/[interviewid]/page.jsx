@@ -28,7 +28,7 @@ const Interview = ({ params }) => {
 
   return (
     <div className="my-10  text-center ">
-      <h2 className="font-bold text-2xl">Let's Get Started</h2>
+      <h2 className="font-bold text-2xl">Let"s Get Started</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
@@ -86,9 +86,9 @@ const Interview = ({ params }) => {
               Enable Video Cam and Microphone to Start your AI Generated Mock
               Interview.
               <br />
-              <strong className="text-red-600">Note:</strong> I don't have
+              <strong className="text-red-600">Note:</strong> I don"t have
               enough storage in my database so the video will not be recorded
-              but still you can disable it anytime if you don't want to see you
+              but still you can disable it anytime if you don"t want to see you
               face (without filter :)
             </h2>
           </div>
