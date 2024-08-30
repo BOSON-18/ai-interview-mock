@@ -6,6 +6,8 @@ import { db } from 'utils/db';
 import { MockInterview } from 'utils/schema';
 import QuestionsSection from './_components/QuestionsSection'
 import RecordAnswer from './_components/RecordAnswer'
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const StartInterview = ({params}) => {
 
@@ -28,6 +30,7 @@ const StartInterview = ({params}) => {
         const jsonMockResponse=JSON.parse(result[0].jsonMockResponse)
         setInterviewData(result[0]);
         setMockInterviewQuestion(jsonMockResponse);
+        console.log(mockInterviewQuestion)
         console.log(jsonMockResponse)
       };
 
@@ -43,8 +46,14 @@ const StartInterview = ({params}) => {
 
         {/* Video/Audio Recording */}
 
-        <RecordAnswer activeQuestionIndex={activeQuestionIndex}/>
+        <RecordAnswer activeQuestionIndex={activeQuestionIndex} mockInterviewQuestion={mockInterviewQuestion} interviewData={interviewData} />
 
+    </div>
+
+    <div>
+      <Link href={'/dashboard/interview/'+interviewData?.mockId+'/feedback'}>
+      <Button>End Interview</Button>
+      </Link>
     </div>
     </div>
   )

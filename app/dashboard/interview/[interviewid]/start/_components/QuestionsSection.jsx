@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/carousel";
 
 const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex,setActiveQuestionIndex }) => {
-  console.log("Question section", mockInterviewQuestion);
+   console.log("Question section", mockInterviewQuestion);
   
 
   const textToSpeach = (text) => {
@@ -23,7 +23,7 @@ const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex,setActive
     }
   };
 
-  console.log(activeQuestionIndex)
+  // console.log(activeQuestionIndex)
   return (
     mockInterviewQuestion && (
       <div className="p-5 border rounded-lg my-10">
@@ -39,7 +39,7 @@ const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex,setActive
         <Carousel>
           <CarouselContent className="mx-2 gap-2">
             {mockInterviewQuestion &&
-              mockInterviewQuestion.questions.map((question, index) => (
+              mockInterviewQuestion?.questions?.map((question, index) => (
                 <CarouselItem className={` w-1/2 bg-slate-300 rounded-full text-xs md:text-sm text-center ${
                     activeQuestionIndex == index && "bg-purple-500 text-white"
                   } `} key={index}>
@@ -56,7 +56,7 @@ const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex,setActive
         </div>
 
         <h2 className="my-5 text-md md:text-lg ">
-          {mockInterviewQuestion?.questions[activeQuestionIndex]?.question}
+          { mockInterviewQuestion && mockInterviewQuestion?.questions[activeQuestionIndex]?.question}
         </h2>
         <Volume2
           className="cursor-pointer"
