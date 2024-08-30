@@ -13,7 +13,7 @@ const Interview = ({ params }) => {
   const [webCamEnabled, setWebCamEnabled] = useState(false);
 
   useEffect(() => {
-    console.log(params.interviewid);
+    // console.log(params.interviewid);
     getInterviewDetails();
   }, []);
 

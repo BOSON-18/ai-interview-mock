@@ -5,12 +5,13 @@ import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import useSpeechToText from "react-hook-speech-to-text";
 import { Mic, StopCircle } from "lucide-react";
-import { toast } from "sonner";
+import { useToast } from "@/components/ui/use-toast";
 import { chatSession } from "utils/GeminiAiModel";
 import { db } from "utils/db";
 import { UserAnswer } from "utils/schema";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
+import { Toast, ToastAction } from "@/components/ui/toast";
 
 const RecordAnswerSection = ({
   mockInterviewQuestion,
@@ -20,6 +21,7 @@ const RecordAnswerSection = ({
   const [userAnswer, setUserAnswer] = useState("");
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
   const {
     error,
     interimResult,
@@ -58,7 +60,7 @@ const RecordAnswerSection = ({
   };
 
   const UpdateUserAnswer = async () => {
-    console.log(userAnswer, "########");
+    // console.log(userAnswer, "########");
     setLoading(true);
     const feedbackPrompt =
       "Question:" +
@@ -68,48 +70,57 @@ const RecordAnswerSection = ({
       ",Depends on question and user answer for given interview question " +
       " please give use rating for answer and feedback as area of improvement if any" +
       " in just 3 to 5 lines to improve it in JSON format with rating field and feedback field";
-    console.log(
-      "🚀 ~ file: RecordAnswerSection.jsx:38 ~ SaveUserAnswer ~ feedbackPrompt:",
-      feedbackPrompt
-    );
+    // console.log(
+    //   "🚀 ~ file: RecordAnswerSection.jsx:38 ~ SaveUserAnswer ~ feedbackPrompt:",
+    //   feedbackPrompt
+    // );
     const result = await chatSession.sendMessage(feedbackPrompt);
-    console.log(
-      "🚀 ~ file: RecordAnswerSection.jsx:46 ~ SaveUserAnswer ~ result:",
-      result
-    );
+    // console.log(
+    //   "🚀 ~ file: RecordAnswerSection.jsx:46 ~ SaveUserAnswer ~ result:",
+    //   result
+    // );
     const mockJsonResp = result.response
       .text()
       .replace("```json", "")
       .replace("```", "");
 
-    console.log(
-      "🚀 ~ file: RecordAnswerSection.jsx:47 ~ SaveUserAnswer ~ mockJsonResp:",
-      mockJsonResp
-    );
+    // console.log(
+    //   "🚀 ~ file: RecordAnswerSection.jsx:47 ~ SaveUserAnswer ~ mockJsonResp:",
+    //   mockJsonResp
+    // );
     const JsonfeedbackResp = JSON.parse(mockJsonResp);
-    const resp = await db.insert(UserAnswer).values({
-      mockIdRef: interviewData?.mockId,
-      question: mockInterviewQuestion?.questions[activeQuestionIndex]?.question,
-      correctAns: mockInterviewQuestion?.questions[activeQuestionIndex]?.answer,
-      userAns: userAnswer,
-      feedback: JsonfeedbackResp?.feedback,
-      rating: JsonfeedbackResp?.rating,
-      userEmail: user?.primaryEmailAddress?.emailAddress,
-      createdAt: moment().format("DD-MM-YYYY"),
-    })  .onConflictDoUpdate({
-      target: ['mockIdRef', 'question', 'userEmail'], // Specify the unique columns here
-      set: {
-        correctAns: mockInterviewQuestion?.questions[activeQuestionIndex]?.answer,
+    let resp;
+    try {
+      resp = await db.insert(UserAnswer).values({
+        mockIdRef: interviewData?.mockId,
+        question:
+          mockInterviewQuestion?.questions[activeQuestionIndex]?.question,
+        correctAns:
+          mockInterviewQuestion?.questions[activeQuestionIndex]?.answer,
         userAns: userAnswer,
         feedback: JsonfeedbackResp?.feedback,
         rating: JsonfeedbackResp?.rating,
+        userEmail: user?.primaryEmailAddress?.emailAddress,
         createdAt: moment().format("DD-MM-YYYY"),
-      },
-    });
-  ;
-
+      });
+      //  .onConflictDoUpdate({
+      //   target: [interviewData?.mockId], // Specify the unique columns here
+      //   set: {
+      //     correctAns: mockInterviewQuestion?.questions[activeQuestionIndex]?.answer,
+      //     userAns: userAnswer,
+      //     feedback: JsonfeedbackResp?.feedback,
+      //     rating: JsonfeedbackResp?.rating,
+      //     createdAt: moment().format("DD-MM-YYYY"),
+      //   },
+      // });
+    } catch (error) {
+      console.log(error);
+      console.log(error.message);
+    }
     if (resp) {
-      toast("User Answer recorded successfully");
+      toast({
+        description: "User Answer recorded successfully",
+      });
       setUserAnswer("");
       setResults([]);
     }

@@ -9,7 +9,7 @@ const Header = () => {
     const path=usePathname();//Hook hai so use useClient
 
     useEffect(()=>{
-        console.log(path)
+        // console.log(path)
     },[])
   return (
     <div className='flex p-4 items-center justify-between bg-secondary shadow-sm'>

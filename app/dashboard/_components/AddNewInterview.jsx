@@ -43,7 +43,7 @@ const AddNewInterview = () => {
       .replace("```", "");
     // console.log(result.response.text());
     // console.log(JSON.parse(result.response.text()));
-    console.log(JSON.parse(MockJsonResponse));
+    // console.log(JSON.parse(MockJsonResponse));
     setJSONResponse(MockJsonResponse);
 
     if(MockJsonResponse){
@@ -59,7 +59,7 @@ const AddNewInterview = () => {
         createdAt:moment().format()
       }).returning({mockId:MockInterview.mockId});
 
-      console.log("Inserted ID:",response)
+      // console.log("Inserted ID:",response)
 
       if(response){
         setOpenDialog(false);

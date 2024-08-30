@@ -25,13 +25,13 @@ const StartInterview = ({params}) => {
           .select()
           .from(MockInterview)
           .where(eq(MockInterview.mockId, params.interviewid));
-        console.log(result);
+        // console.log(result);
         
         const jsonMockResponse=JSON.parse(result[0].jsonMockResponse)
         setInterviewData(result[0]);
         setMockInterviewQuestion(jsonMockResponse);
-        console.log(mockInterviewQuestion)
-        console.log(jsonMockResponse)
+        // console.log(mockInterviewQuestion)
+        // console.log(jsonMockResponse)
       };
 
   return (

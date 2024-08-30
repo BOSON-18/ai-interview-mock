@@ -21,10 +21,10 @@ const InterviewList = () => {
       )
       .orderBy(desc(MockInterview.id));
 
-    console.log(
-      "🚀 ~ file: InterviewList.jsx:14 ~ GetInterviewList ~ GetInterviewList:",
-      GetInterviewList
-    );
+    // console.log(
+    //   "🚀 ~ file: InterviewList.jsx:14 ~ GetInterviewList ~ GetInterviewList:",
+    //   GetInterviewList
+    // );
     setInterviewList(result);
   };
   return (

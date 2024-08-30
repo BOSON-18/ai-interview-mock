@@ -23,7 +23,7 @@ const Feedback = ({ params }) => {
       .where(eq(UserAnswer.mockIdRef, params.interviewid))
       .orderBy(UserAnswer.id);
 
-    console.log(result);
+    // console.log(result);
     setFeedbackList(result);
   };
 
@@ -34,6 +34,11 @@ const Feedback = ({ params }) => {
     <div className="p-10">
       <h2 className="font-bold text-3xl text-green-500">Congratulations</h2>
       <h2 className="font-bold text-2xl">Here is your interview Feedback</h2>
+      
+      {feedbackList?.length === 0 ? <h2 className="text-slate-500 text-lg my-3">
+      No feedback for given Interview
+      </h2>:  
+      <div>
       <h2 className="text-slate-500 text-lg my-3">
         Your Overall Interview Rating: <strong>x/10</strong>
       </h2>
@@ -63,6 +68,8 @@ const Feedback = ({ params }) => {
 <div  className="flex justify-center mt-5">
         <Button onClick={()=>router.replace('/dashboard')} >Go Home</Button>
         </div>
+        </div>
+}
     </div>
   );
 };
