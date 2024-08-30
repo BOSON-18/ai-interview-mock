@@ -1,11 +1,12 @@
 import { SignIn } from "@clerk/nextjs";
+import Image from "next/image";
 
 export default function Page() {
   return (
   <section className="bg-white">
     <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
       <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
-        <img
+        <Image
           alt=""
           src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
           className="absolute inset-0 h-full w-full object-cover opacity-80"
@@ -32,7 +33,7 @@ export default function Page() {
           </h2>
   
           <p className="mt-4 leading-relaxed text-white/90">
-          Well Clumsy don't interview but clumsy made Google do this .
+          Well Clumsy dont interview but clumsy made Google do this .
           </p>
         </div>
       </section>
@@ -65,7 +66,7 @@ export default function Page() {
             </h1>
   
             <p className="mt-4 leading-relaxed text-gray-500">
-            Well Clumsy don't interview but clumsy made Google do this .
+            Well Clumsy dont interview but clumsy made Google do this .
             </p>
           </div>
   
