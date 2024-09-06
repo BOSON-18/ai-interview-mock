@@ -72,8 +72,7 @@ export default function Home() {
             </h1>
   
             <p className="mt-4 leading-relaxed text-gray-500">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-              quibusdam aperiam voluptatum.
+              Well Clumsy dont interview but clumsy made Google do this .
             </p>
           </div>
   <div>
