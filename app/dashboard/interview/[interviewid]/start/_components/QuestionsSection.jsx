@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex,setActiveQuestionIndex }) => {
+const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex,setActiveQuestionIndex,handleNextQuestion,handlePreviousQuestion }) => {
   //  console.log("Question section", mockInterviewQuestion);
   
 
@@ -50,8 +50,8 @@ const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex,setActive
                 </CarouselItem>
               ))}
           </CarouselContent>
-          <CarouselPrevious activeQuestionIndex={activeQuestionIndex} setActiveQuestionIndex={setActiveQuestionIndex}/>
-          <CarouselNext activeQuestionIndex={activeQuestionIndex}  setActiveQuestionIndex={setActiveQuestionIndex} />
+          <CarouselPrevious activeQuestionIndex={activeQuestionIndex} setActiveQuestionIndex={setActiveQuestionIndex} handleNextQuestion={handleNextQuestion} handlePreviousQuestion={handlePreviousQuestion}/>
+          <CarouselNext activeQuestionIndex={activeQuestionIndex}  setActiveQuestionIndex={setActiveQuestionIndex} handleNextQuestion={handleNextQuestion} handlePreviousQuestion={handlePreviousQuestion} />
         </Carousel>
         </div>
 

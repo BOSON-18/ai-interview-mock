@@ -161,7 +161,7 @@ const CarouselPrevious = React.forwardRef(({ className, variant = "outline", siz
         ? "-left-12 top-1/2 -translate-y-1/2"
         : "-top-12 left-1/2 -translate-x-1/2 rotate-90", className)}
       disabled={!canScrollPrev}
-      onClick={()=>{scrollPrev(); props.setActiveQuestionIndex(props.activeQuestionIndex-1) ; }}
+      onClick={()=>{scrollPrev(); props.handlePreviousQuestion }}
       {...props}>
       <ArrowLeft className="h-4 w-4" />
       <span className="sr-only">Previous slide</span>
@@ -185,7 +185,8 @@ const CarouselNext = React.forwardRef(({ className, variant = "outline", size = 
       onClick={() => {
         scrollNext();
         // Update activeQuestionIndex in the parent component
-        props.setActiveQuestionIndex(props.activeQuestionIndex+1)
+        // props.setActiveQuestionIndex(props.activeQuestionIndex+1)
+        props.handleNextQuestion()
         // console.log(props.activeQuestionIndex)
       }}
       {...props}>

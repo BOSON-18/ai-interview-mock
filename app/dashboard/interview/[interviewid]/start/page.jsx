@@ -34,13 +34,22 @@ const StartInterview = ({params}) => {
         // console.log(jsonMockResponse)
       };
 
+      const handleNextQuestion = () => {
+        setActiveQuestionIndex(activeQuestionIndex + 1);
+      };
+    
+      const handlePreviousQuestion = () => {
+        setActiveQuestionIndex(activeQuestionIndex - 1);
+      };
+    
+
   return (
     <div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
         {/* Questions */}
 
-        <QuestionsSection activeQuestionIndex={activeQuestionIndex} mockInterviewQuestion={mockInterviewQuestion} setActiveQuestionIndex={setActiveQuestionIndex}/>
+        <QuestionsSection handleNextQuestion={handleNextQuestion} handlePreviousQuestion={handlePreviousQuestion} activeQuestionIndex={activeQuestionIndex} mockInterviewQuestion={mockInterviewQuestion} setActiveQuestionIndex={setActiveQuestionIndex}/>
 
 
 
